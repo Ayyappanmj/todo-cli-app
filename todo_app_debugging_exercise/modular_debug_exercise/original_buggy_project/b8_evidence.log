@@ -1,0 +1,3 @@
+Captured stdout during complete_task() with a forced save failure:
+'\n-- Mark task as completed --\n'
+

@@ -1,0 +1,147 @@
+test_bug_b1_ids_not_reused_after_restart (test_bugfixes.TestBugFixes.test_bug_b1_ids_not_reused_after_restart)
+Bug B1: _compute_next_id() must use max(id)+1, not len(tasks)+1, ... /home/claude/modular_debug_exercise/original_buggy_project/todo_app/manager.py:76: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmptg4diw_r.json' mode='w' encoding='utf-8'>
+  save_tasks(self.tasks, self.filepath)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+FAIL
+test_bug_b2_priority_is_case_insensitive (test_bugfixes.TestBugFixes.test_bug_b2_priority_is_case_insensitive)
+Bug B2: priority validation must normalize case. ... ERROR
+test_bug_b4_task_due_today_is_not_overdue (test_bugfixes.TestBugFixes.test_bug_b4_task_due_today_is_not_overdue)
+Bug B4: a task due today should not be flagged overdue until ... FAIL
+test_bug_b5_from_dict_handles_missing_description (test_bugfixes.TestBugFixes.test_bug_b5_from_dict_handles_missing_description)
+Bug B5: older-format records without a 'description' key must ... ERROR
+test_bug_b6_save_tasks_reports_write_failures (test_bugfixes.TestBugFixes.test_bug_b6_save_tasks_reports_write_failures)
+Bug B6: a write failure must raise a clear StorageError, not a ... ERROR
+test_bug_b7_one_bad_record_does_not_lose_the_rest (test_bugfixes.TestBugFixes.test_bug_b7_one_bad_record_does_not_lose_the_rest)
+Bug B7: a single malformed task record in tasks.json must be ... ERROR
+test_add_task_basic (test_manager.TestTaskManager.test_add_task_basic) ... /home/claude/modular_debug_exercise/original_buggy_project/todo_app/manager.py:76: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmp3xdj8uz3.json' mode='w' encoding='utf-8'>
+  save_tasks(self.tasks, self.filepath)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_add_task_empty_title_raises (test_manager.TestTaskManager.test_add_task_empty_title_raises) ... ok
+test_add_task_invalid_due_date_raises (test_manager.TestTaskManager.test_add_task_invalid_due_date_raises) ... ok
+test_add_task_invalid_priority_raises (test_manager.TestTaskManager.test_add_task_invalid_priority_raises) ... ok
+test_complete_nonexistent_task_raises (test_manager.TestTaskManager.test_complete_nonexistent_task_raises) ... ok
+test_complete_task (test_manager.TestTaskManager.test_complete_task) ... /home/claude/modular_debug_exercise/original_buggy_project/todo_app/manager.py:76: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpxhosougb.json' mode='w' encoding='utf-8'>
+  save_tasks(self.tasks, self.filepath)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_edit_task_clear_due_date (test_manager.TestTaskManager.test_edit_task_clear_due_date) ... /home/claude/modular_debug_exercise/original_buggy_project/todo_app/manager.py:76: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpazciu6cf.json' mode='w' encoding='utf-8'>
+  save_tasks(self.tasks, self.filepath)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+FAIL
+test_edit_task_partial_update (test_manager.TestTaskManager.test_edit_task_partial_update) ... /home/claude/modular_debug_exercise/original_buggy_project/todo_app/manager.py:76: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpfyq532qa.json' mode='w' encoding='utf-8'>
+  save_tasks(self.tasks, self.filepath)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_ids_increment_and_do_not_reuse_after_delete (test_manager.TestTaskManager.test_ids_increment_and_do_not_reuse_after_delete) ... /home/claude/modular_debug_exercise/original_buggy_project/todo_app/manager.py:76: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmph8n2_rba.json' mode='w' encoding='utf-8'>
+  save_tasks(self.tasks, self.filepath)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_list_tasks_filter_pending (test_manager.TestTaskManager.test_list_tasks_filter_pending) ... /home/claude/modular_debug_exercise/original_buggy_project/todo_app/manager.py:76: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpl6lckm11.json' mode='w' encoding='utf-8'>
+  save_tasks(self.tasks, self.filepath)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_list_tasks_filter_priority (test_manager.TestTaskManager.test_list_tasks_filter_priority) ... /home/claude/modular_debug_exercise/original_buggy_project/todo_app/manager.py:76: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpljd8r5wr.json' mode='w' encoding='utf-8'>
+  save_tasks(self.tasks, self.filepath)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_persistence_across_manager_instances (test_manager.TestTaskManager.test_persistence_across_manager_instances) ... /home/claude/modular_debug_exercise/original_buggy_project/todo_app/manager.py:76: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpiutuhjyl.json' mode='w' encoding='utf-8'>
+  save_tasks(self.tasks, self.filepath)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_remove_nonexistent_task_raises (test_manager.TestTaskManager.test_remove_nonexistent_task_raises) ... ok
+test_remove_task (test_manager.TestTaskManager.test_remove_task) ... /home/claude/modular_debug_exercise/original_buggy_project/todo_app/manager.py:76: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpc0qxgtk5.json' mode='w' encoding='utf-8'>
+  save_tasks(self.tasks, self.filepath)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_stats (test_manager.TestTaskManager.test_stats) ... /home/claude/modular_debug_exercise/original_buggy_project/todo_app/manager.py:76: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpell6gf_v.json' mode='w' encoding='utf-8'>
+  save_tasks(self.tasks, self.filepath)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+
+======================================================================
+ERROR: test_bug_b2_priority_is_case_insensitive (test_bugfixes.TestBugFixes.test_bug_b2_priority_is_case_insensitive)
+Bug B2: priority validation must normalize case.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/claude/modular_debug_exercise/original_buggy_project/tests/test_bugfixes.py", line 58, in test_bug_b2_priority_is_case_insensitive
+    task = m.add_task("Task", priority="High")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/modular_debug_exercise/original_buggy_project/todo_app/manager.py", line 129, in add_task
+    clean_priority = self._validate_priority(priority)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/modular_debug_exercise/original_buggy_project/todo_app/manager.py", line 96, in _validate_priority
+    raise ValidationError(
+todo_app.manager.ValidationError: Priority must be one of ('low', 'medium', 'high'), got 'High'.
+
+======================================================================
+ERROR: test_bug_b5_from_dict_handles_missing_description (test_bugfixes.TestBugFixes.test_bug_b5_from_dict_handles_missing_description)
+Bug B5: older-format records without a 'description' key must
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/claude/modular_debug_exercise/original_buggy_project/tests/test_bugfixes.py", line 72, in test_bug_b5_from_dict_handles_missing_description
+    task = Task.from_dict(old_record)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/modular_debug_exercise/original_buggy_project/todo_app/models.py", line 76, in from_dict
+    description=str(data["description"]),
+                    ~~~~^^^^^^^^^^^^^^^
+KeyError: 'description'
+
+======================================================================
+ERROR: test_bug_b6_save_tasks_reports_write_failures (test_bugfixes.TestBugFixes.test_bug_b6_save_tasks_reports_write_failures)
+Bug B6: a write failure must raise a clear StorageError, not a
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/claude/modular_debug_exercise/original_buggy_project/tests/test_bugfixes.py", line 94, in test_bug_b6_save_tasks_reports_write_failures
+    save_tasks([Task(id=1, title="x")], bad_path)
+  File "/home/claude/modular_debug_exercise/original_buggy_project/todo_app/storage.py", line 80, in save_tasks
+    f = open(filepath, "w", encoding="utf-8")
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/this/directory/does/not/exist/tasks.json'
+
+======================================================================
+ERROR: test_bug_b7_one_bad_record_does_not_lose_the_rest (test_bugfixes.TestBugFixes.test_bug_b7_one_bad_record_does_not_lose_the_rest)
+Bug B7: a single malformed task record in tasks.json must be
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/claude/modular_debug_exercise/original_buggy_project/tests/test_bugfixes.py", line 84, in test_bug_b7_one_bad_record_does_not_lose_the_rest
+    tasks = load_tasks(self.path)  # must not raise
+            ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/modular_debug_exercise/original_buggy_project/todo_app/storage.py", line 68, in load_tasks
+    tasks.append(Task.from_dict(item))
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/modular_debug_exercise/original_buggy_project/todo_app/models.py", line 74, in from_dict
+    id=int(data["id"]),
+           ~~~~^^^^^^
+KeyError: 'id'
+
+======================================================================
+FAIL: test_bug_b1_ids_not_reused_after_restart (test_bugfixes.TestBugFixes.test_bug_b1_ids_not_reused_after_restart)
+Bug B1: _compute_next_id() must use max(id)+1, not len(tasks)+1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/claude/modular_debug_exercise/original_buggy_project/tests/test_bugfixes.py", line 52, in test_bug_b1_ids_not_reused_after_restart
+    self.assertEqual(len(ids), len(set(ids)), f"duplicate ids found: {ids}")
+AssertionError: 3 != 2 : duplicate ids found: [1, 3, 3]
+
+======================================================================
+FAIL: test_bug_b4_task_due_today_is_not_overdue (test_bugfixes.TestBugFixes.test_bug_b4_task_due_today_is_not_overdue)
+Bug B4: a task due today should not be flagged overdue until
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/claude/modular_debug_exercise/original_buggy_project/tests/test_bugfixes.py", line 66, in test_bug_b4_task_due_today_is_not_overdue
+    self.assertFalse(task.is_overdue())
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_edit_task_clear_due_date (test_manager.TestTaskManager.test_edit_task_clear_due_date)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/claude/modular_debug_exercise/original_buggy_project/tests/test_manager.py", line 101, in test_edit_task_clear_due_date
+    self.assertIsNone(updated.due_date)
+AssertionError: '2026-01-01' is not None
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.009s
+
+FAILED (failures=3, errors=4)

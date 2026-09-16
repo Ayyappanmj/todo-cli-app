@@ -1,0 +1,103 @@
+
+==========================================================================
+BUG B1 (manager.py): duplicate task IDs after deletion + restart
+==========================================================================
+Ids after restart + adding 'Fourth': [1, 3, 3]
+New task id: 3 | collides with an existing task? True
+
+==========================================================================
+BUG B2 (manager.py): priority is case-sensitive
+==========================================================================
+
+--- add_task('Task', priority='High') ---
+EXCEPTION RAISED:
+Traceback (most recent call last):
+  File "/home/claude/modular_debug_exercise/original_buggy_project/reproduce_bugs.py", line 28, in run
+    result = fn()
+             ^^^^
+  File "/home/claude/modular_debug_exercise/original_buggy_project/reproduce_bugs.py", line 71, in <lambda>
+    run("add_task('Task', priority='High')", lambda: m.add_task("Task", priority="High"))
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/modular_debug_exercise/original_buggy_project/todo_app/manager.py", line 129, in add_task
+    clean_priority = self._validate_priority(priority)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/modular_debug_exercise/original_buggy_project/todo_app/manager.py", line 96, in _validate_priority
+    raise ValidationError(
+todo_app.manager.ValidationError: Priority must be one of ('low', 'medium', 'high'), got 'High'.
+
+==========================================================================
+BUG B3 (manager.py): clearing a due date silently does nothing
+==========================================================================
+due_date after 'clearing' it: 2026-01-01 (expected: None)
+
+==========================================================================
+BUG B4 (models.py): task due today is incorrectly 'overdue'
+==========================================================================
+is_overdue(): True (expected: False, it's not overdue until AFTER today)
+
+==========================================================================
+BUG B5 (models.py): loading an older-format record crashes
+==========================================================================
+
+--- Task.from_dict(old_format_record) ---
+EXCEPTION RAISED:
+Traceback (most recent call last):
+  File "/home/claude/modular_debug_exercise/original_buggy_project/reproduce_bugs.py", line 28, in run
+    result = fn()
+             ^^^^
+  File "/home/claude/modular_debug_exercise/original_buggy_project/reproduce_bugs.py", line 97, in <lambda>
+    run("Task.from_dict(old_format_record)", lambda: Task.from_dict(old_format_record))
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/modular_debug_exercise/original_buggy_project/todo_app/models.py", line 76, in from_dict
+    description=str(data["description"]),
+                    ~~~~^^^^^^^^^^^^^^^
+KeyError: 'description'
+
+==========================================================================
+BUG B6 (storage.py): save_tasks() crashes with a raw OSError
+==========================================================================
+
+--- save_tasks(tasks, bad_path) ---
+EXCEPTION RAISED:
+Traceback (most recent call last):
+  File "/home/claude/modular_debug_exercise/original_buggy_project/reproduce_bugs.py", line 28, in run
+    result = fn()
+             ^^^^
+  File "/home/claude/modular_debug_exercise/original_buggy_project/reproduce_bugs.py", line 105, in <lambda>
+    run("save_tasks(tasks, bad_path)", lambda: save_tasks([Task(id=1, title="x")], bad_path))
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/modular_debug_exercise/original_buggy_project/todo_app/storage.py", line 80, in save_tasks
+    f = open(filepath, "w", encoding="utf-8")
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/this/directory/does/not/exist/tasks.json'
+
+==========================================================================
+BUG B7 (storage.py): one malformed task record loses ALL tasks
+==========================================================================
+
+--- load_tasks(path_with_one_bad_record) ---
+EXCEPTION RAISED:
+Traceback (most recent call last):
+  File "/home/claude/modular_debug_exercise/original_buggy_project/reproduce_bugs.py", line 28, in run
+    result = fn()
+             ^^^^
+  File "/home/claude/modular_debug_exercise/original_buggy_project/reproduce_bugs.py", line 119, in <lambda>
+    run("load_tasks(path_with_one_bad_record)", lambda: load_tasks(p))
+                                                        ^^^^^^^^^^^^^
+  File "/home/claude/modular_debug_exercise/original_buggy_project/todo_app/storage.py", line 68, in load_tasks
+    tasks.append(Task.from_dict(item))
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/modular_debug_exercise/original_buggy_project/todo_app/models.py", line 76, in from_dict
+    description=str(data["description"]),
+                    ~~~~^^^^^^^^^^^^^^^
+KeyError: 'description'
+Expected: the GOOD task should still load; instead the whole load crashes.
+
+==========================================================================
+BUG B8 (cli.py): a failed save gives the user NO feedback at all
+==========================================================================
+(See DEBUGGING_LOG.md — reproduced via code walkthrough: the
+ `except StorageError: pass` block prints nothing on failure,
+ and the success message in the `else` clause is skipped too,
+ so the user sees no output and wrongly assumes nothing happened
+ rather than being told their change was lost.)
