@@ -1,0 +1,34 @@
+test_addition (tests.test_parser.TestParseBinaryPrecedence.test_addition) ... ok
+test_addition_is_left_associative (tests.test_parser.TestParseBinaryPrecedence.test_addition_is_left_associative) ... ok
+test_modulo_same_precedence_as_multiply_divide (tests.test_parser.TestParseBinaryPrecedence.test_modulo_same_precedence_as_multiply_divide) ... ok
+test_multiplication_binds_tighter_than_addition (tests.test_parser.TestParseBinaryPrecedence.test_multiplication_binds_tighter_than_addition) ... ok
+test_multiplication_is_left_associative (tests.test_parser.TestParseBinaryPrecedence.test_multiplication_is_left_associative) ... ok
+test_parentheses_override_precedence (tests.test_parser.TestParseBinaryPrecedence.test_parentheses_override_precedence) ... ok
+test_empty_expression_raises (tests.test_parser.TestParseErrors.test_empty_expression_raises) ... ok
+test_empty_parentheses_raise (tests.test_parser.TestParseErrors.test_empty_parentheses_raise) ... ok
+test_error_message_is_descriptive (tests.test_parser.TestParseErrors.test_error_message_is_descriptive) ... ok
+test_leading_binary_operator_raises (tests.test_parser.TestParseErrors.test_leading_binary_operator_raises) ... ok
+test_trailing_operator_raises (tests.test_parser.TestParseErrors.test_trailing_operator_raises) ... ok
+test_two_numbers_with_no_operator_raises (tests.test_parser.TestParseErrors.test_two_numbers_with_no_operator_raises) ... ok
+test_unclosed_parenthesis_raises (tests.test_parser.TestParseErrors.test_unclosed_parenthesis_raises) ... ok
+test_unopened_parenthesis_raises (tests.test_parser.TestParseErrors.test_unopened_parenthesis_raises) ... ok
+test_whitespace_only_expression_raises (tests.test_parser.TestParseErrors.test_whitespace_only_expression_raises) ... ok
+test_power_binds_tighter_than_multiplication (tests.test_parser.TestParsePower.test_power_binds_tighter_than_multiplication) ... ok
+test_power_is_right_associative (tests.test_parser.TestParsePower.test_power_is_right_associative) ... ok
+test_power_with_unary_minus_exponent (tests.test_parser.TestParsePower.test_power_with_unary_minus_exponent) ... ok
+test_nested_parentheses (tests.test_parser.TestParseSingleValues.test_nested_parentheses) ... ok
+test_parenthesized_number (tests.test_parser.TestParseSingleValues.test_parenthesized_number) ... ok
+test_single_float (tests.test_parser.TestParseSingleValues.test_single_float) ... ok
+test_single_number (tests.test_parser.TestParseSingleValues.test_single_number) ... ok
+test_binary_plus_followed_by_unary_plus (tests.test_parser.TestParseUnary.test_binary_plus_followed_by_unary_plus) ... ok
+test_double_unary_minus (tests.test_parser.TestParseUnary.test_double_unary_minus) ... ok
+test_unary_minus (tests.test_parser.TestParseUnary.test_unary_minus) ... ok
+test_unary_minus_binds_looser_than_power (tests.test_parser.TestParseUnary.test_unary_minus_binds_looser_than_power) ... ok
+test_unary_plus (tests.test_parser.TestParseUnary.test_unary_plus) ... ok
+test_hand_built_addition (tests.test_parser.TestParserAgainstHandBuiltTokens.test_hand_built_addition) ... ok
+test_hand_built_trailing_garbage_token_raises (tests.test_parser.TestParserAgainstHandBuiltTokens.test_hand_built_trailing_garbage_token_raises) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 0.001s
+
+OK

@@ -1,0 +1,27 @@
+test_matches_python_eval_for_each_expression (tests.test_integration.TestEndToEndAgainstPythonAsOracle.test_matches_python_eval_for_each_expression) ... ok
+test_binary_plus_then_unary_plus (tests.test_integration.TestEndToEndArithmetic.test_binary_plus_then_unary_plus) ... ok
+test_deeply_nested_expression (tests.test_integration.TestEndToEndArithmetic.test_deeply_nested_expression) ... ok
+test_division_returns_float (tests.test_integration.TestEndToEndArithmetic.test_division_returns_float) ... ok
+test_floats (tests.test_integration.TestEndToEndArithmetic.test_floats) ... ok
+test_generous_whitespace (tests.test_integration.TestEndToEndArithmetic.test_generous_whitespace) ... ok
+test_modulo (tests.test_integration.TestEndToEndArithmetic.test_modulo) ... ok
+test_nested_parens_with_unary (tests.test_integration.TestEndToEndArithmetic.test_nested_parens_with_unary) ... ok
+test_operator_precedence (tests.test_integration.TestEndToEndArithmetic.test_operator_precedence) ... ok
+test_parentheses_override_precedence (tests.test_integration.TestEndToEndArithmetic.test_parentheses_override_precedence) ... ok
+test_power_right_associativity (tests.test_integration.TestEndToEndArithmetic.test_power_right_associativity) ... ok
+test_simple_addition (tests.test_integration.TestEndToEndArithmetic.test_simple_addition) ... ok
+test_unary_minus_vs_power_precedence (tests.test_integration.TestEndToEndArithmetic.test_unary_minus_vs_power_precedence) ... ok
+test_all_error_types_are_calculator_errors (tests.test_integration.TestEndToEndErrorPropagation.test_all_error_types_are_calculator_errors) ... ok
+test_division_by_zero_inside_parens_raises (tests.test_integration.TestEndToEndErrorPropagation.test_division_by_zero_inside_parens_raises) ... ok
+test_division_by_zero_raises_evaluation_error (tests.test_integration.TestEndToEndErrorPropagation.test_division_by_zero_raises_evaluation_error) ... ok
+test_empty_expression_raises_parse_error (tests.test_integration.TestEndToEndErrorPropagation.test_empty_expression_raises_parse_error) ... ok
+test_invalid_character_raises_tokenize_error (tests.test_integration.TestEndToEndErrorPropagation.test_invalid_character_raises_tokenize_error) ... ok
+test_unbalanced_parens_raises_parse_error (tests.test_integration.TestEndToEndErrorPropagation.test_unbalanced_parens_raises_parse_error) ... ok
+test_error_hierarchy (tests.test_integration.TestPackageExports.test_error_hierarchy) ... ok
+test_error_types_are_exported (tests.test_integration.TestPackageExports.test_error_types_are_exported) ... ok
+test_evaluate_is_exported (tests.test_integration.TestPackageExports.test_evaluate_is_exported) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.001s
+
+OK

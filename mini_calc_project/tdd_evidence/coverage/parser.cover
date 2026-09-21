@@ -1,0 +1,143 @@
+    1: """
+       parser.py
+       ---------
+       A recursive-descent parser that turns a list of Tokens into an AST.
+       
+       Grammar (loosest to tightest precedence -- see test_parser.py's
+       module docstring for the full formal grammar and the reasoning behind
+       matching Python's own precedence rules):
+       
+           expr     := term (('+' | '-') term)*
+           term     := unary (('*' | '/' | '%') unary)*
+           unary    := ('-' | '+') unary | power
+           power    := primary ('**' unary)?      # right-associative
+           primary  := NUMBER | '(' expr ')'
+       
+       Each grammar rule above is implemented as one method below with a
+       matching name, which is the standard structure for a recursive-descent
+       parser -- it makes the code and the grammar easy to compare side by
+       side, and makes it obvious where to look when a specific precedence
+       level needs to change.
+       """
+       
+    1: from __future__ import annotations
+       
+    1: from typing import List
+       
+    1: from .ast_nodes import ASTNode, Number, UnaryOp, BinaryOp
+    1: from .errors import ParseError
+    1: from .tokenizer import Token, TokenType, tokenize
+       
+       
+    2: class Parser:
+    1:     """Parses a fixed list of Tokens (produced by the tokenizer, or
+           built by hand in tests) into a single ASTNode."""
+       
+    1:     def __init__(self, tokens: List[Token]):
+   60:         self._tokens = tokens
+   60:         self._pos = 0
+       
+           # ------------------------------------------------------------------
+           # Token-stream helpers
+           # ------------------------------------------------------------------
+    1:     def _current(self) -> Token:
+  762:         return self._tokens[self._pos]
+       
+    1:     def _advance(self) -> Token:
+  246:         token = self._tokens[self._pos]
+  246:         self._pos += 1
+  246:         return token
+       
+    1:     def _expect(self, token_type: TokenType, what: str) -> Token:
+   19:         if self._current().type != token_type:
+    6:             raise ParseError(
+    6:                 f"Expected {what} but found {self._current().type.name} "
+    3:                 f"at token position {self._pos}."
+                   )
+   16:         return self._advance()
+       
+           # ------------------------------------------------------------------
+           # Public entry point
+           # ------------------------------------------------------------------
+    1:     def parse(self) -> ASTNode:
+               """Parse the full token list into one ASTNode.
+       
+               Raises ParseError if the tokens don't form a complete, valid
+               expression, or if there are leftover tokens afterward (e.g.
+               an extra ')' with no matching '(').
+               """
+   60:         node = self._expr()
+   50:         if self._current().type != TokenType.EOF:
+    6:             raise ParseError(
+    6:                 f"Unexpected {self._current().type.name} after a complete "
+    3:                 f"expression, at token position {self._pos}."
+                   )
+   47:         return node
+       
+           # ------------------------------------------------------------------
+           # Grammar rules (one method per rule, loosest to tightest binding)
+           # ------------------------------------------------------------------
+    1:     def _expr(self) -> ASTNode:
+               """expr := term (('+' | '-') term)*"""
+   80:         node = self._term()
+  103:         while self._current().type in (TokenType.PLUS, TokenType.MINUS):
+   34:             op_token = self._advance()
+   34:             op = "+" if op_token.type == TokenType.PLUS else "-"
+   34:             right = self._term()
+   32:             node = BinaryOp(op, node, right)
+   69:         return node
+       
+    1:     def _term(self) -> ASTNode:
+               """term := unary (('*' | '/' | '%') unary)*"""
+  114:         node = self._unary()
+  127:         while self._current().type in (TokenType.STAR, TokenType.SLASH, TokenType.PERCENT):
+   24:             op_token = self._advance()
+   24:             op = {TokenType.STAR: "*", TokenType.SLASH: "/", TokenType.PERCENT: "%"}[op_token.type]
+   24:             right = self._unary()
+   24:             node = BinaryOp(op, node, right)
+  103:         return node
+       
+    1:     def _unary(self) -> ASTNode:
+               """unary := ('-' | '+') unary | power"""
+  166:         if self._current().type in (TokenType.PLUS, TokenType.MINUS):
+   15:             op_token = self._advance()
+   15:             op = "+" if op_token.type == TokenType.PLUS else "-"
+   15:             operand = self._unary()  # recurse, so "--5" and "-+5" both work
+   15:             return UnaryOp(op, operand)
+  151:         return self._power()
+       
+    1:     def _power(self) -> ASTNode:
+               """power := primary ('**' unary)?   (right-associative)"""
+  151:         base = self._primary()
+  140:         if self._current().type == TokenType.DOUBLE_STAR:
+   13:             self._advance()
+                   # The exponent recurses into `unary` (not `power`), which is
+                   # what lets "2**-1" and the right-associative chain
+                   # "2**3**2" both parse correctly -- see test_parser.py.
+   13:             exponent = self._unary()
+   13:             return BinaryOp("**", base, exponent)
+  127:         return base
+       
+    1:     def _primary(self) -> ASTNode:
+               """primary := NUMBER | '(' expr ')'"""
+  151:         token = self._current()
+       
+  151:         if token.type == TokenType.NUMBER:
+  124:             self._advance()
+  124:             return Number(token.value)
+       
+   27:         if token.type == TokenType.LPAREN:
+   20:             self._advance()
+   20:             node = self._expr()
+   19:             self._expect(TokenType.RPAREN, "')'")
+   16:             return node
+       
+   14:         raise ParseError(
+   14:             f"Expected a number or '(' but found {token.type.name} "
+    7:             f"at token position {self._pos}."
+               )
+       
+       
+    1: def parse(text: str) -> ASTNode:
+           """Convenience function: tokenize + parse a raw expression string."""
+   60:     return Parser(tokenize(text)).parse()

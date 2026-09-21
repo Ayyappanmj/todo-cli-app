@@ -1,0 +1,32 @@
+    1: """
+       errors.py
+       ---------
+       Custom exception hierarchy for mini_calc.
+       
+       All exceptions raised by this package inherit from CalculatorError,
+       so a caller who doesn't care about the distinction can catch just
+       that one type, while a caller who does care (e.g. to give a more
+       specific message to an end user) can catch the more specific
+       subclasses.
+       """
+       
+       
+    2: class CalculatorError(Exception):
+    1:     """Base class for every error raised by mini_calc."""
+       
+       
+    2: class TokenizeError(CalculatorError):
+    1:     """Raised when the input string contains characters that cannot
+           be turned into valid tokens (e.g. an unsupported symbol, or a
+           malformed number like '3.1.4')."""
+       
+       
+    2: class ParseError(CalculatorError):
+    1:     """Raised when the sequence of tokens does not form a
+           grammatically valid expression (e.g. unbalanced parentheses, a
+           missing operand, or trailing tokens after a complete expression)."""
+       
+       
+    2: class EvaluationError(CalculatorError):
+    1:     """Raised when an expression is syntactically valid but fails at
+           evaluation time (e.g. division by zero)."""

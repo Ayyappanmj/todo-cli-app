@@ -1,0 +1,71 @@
+    1: """
+       evaluator.py
+       ------------
+       Walks an AST (built by parser.py) and computes its numeric value.
+       
+       Design choice: implemented as a simple recursive tree-walk rather
+       than, say, compiling to bytecode or using a visitor-pattern class
+       hierarchy. For a calculator's AST (three node types, no variables or
+       statements) a plain recursive function is the clearest and most
+       directly testable option -- there's no indirection between "what the
+       code does" and "what the grammar rule means."
+       """
+       
+    1: from __future__ import annotations
+       
+    1: from .ast_nodes import ASTNode, Number, UnaryOp, BinaryOp
+    1: from .errors import EvaluationError
+       
+    1: _BINARY_OPS = {
+   19:     "+": lambda a, b: a + b,
+    7:     "-": lambda a, b: a - b,
+   12:     "*": lambda a, b: a * b,
+   13:     "**": lambda a, b: a ** b,
+           # "/" and "%" are handled separately below since they need their
+           # own zero-check before doing the division.
+       }
+       
+    1: _UNARY_OPS = {
+   13:     "-": lambda a: -a,
+    3:     "+": lambda a: +a,
+       }
+       
+       
+    1: def evaluate_ast(node: ASTNode) -> float:
+           """Recursively evaluate an AST node to a single float.
+       
+           Raises:
+               EvaluationError: for a runtime failure such as division or
+                   modulo by zero, or (defensively) an operator symbol the
+                   evaluator doesn't recognize.
+           """
+  189:     if isinstance(node, Number):
+  112:         return float(node.value)
+       
+   77:     if isinstance(node, UnaryOp):
+   15:         operand_value = evaluate_ast(node.operand)
+   15:         func = _UNARY_OPS.get(node.op)
+   15:         if func is None:
+    1:             raise EvaluationError(f"Unknown unary operator '{node.op}'.")
+   14:         return func(operand_value)
+       
+   62:     if isinstance(node, BinaryOp):
+   62:         left_value = evaluate_ast(node.left)
+   62:         right_value = evaluate_ast(node.right)
+       
+   62:         if node.op == "/":
+   10:             if right_value == 0:
+    5:                 raise EvaluationError("Division by zero is undefined.")
+    5:             return left_value / right_value
+       
+   52:         if node.op == "%":
+    4:             if right_value == 0:
+    1:                 raise EvaluationError("Modulo by zero is undefined.")
+    3:             return left_value % right_value
+       
+   48:         func = _BINARY_OPS.get(node.op)
+   48:         if func is None:
+    1:             raise EvaluationError(f"Unknown binary operator '{node.op}'.")
+   47:         return func(left_value, right_value)
+       
+           raise EvaluationError(f"Unknown AST node type: {type(node).__name__}")

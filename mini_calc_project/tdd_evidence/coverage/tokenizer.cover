@@ -1,0 +1,114 @@
+    1: """
+       tokenizer.py
+       ------------
+       Lexical analysis: turns a raw expression string into a flat list of
+       Tokens.
+       
+       Design choice: the tokenizer is deliberately "dumb" about grammar. It
+       does not know that "-5" might mean negative five, or that "2 3" is
+       invalid -- it only knows how to chop the string into the smallest
+       meaningful pieces (numbers, operators, parentheses) and flag any
+       character it doesn't recognize. Keeping grammar rules out of this
+       layer means it can be tested in complete isolation from the parser
+       (see test_tokenizer.py), and the parser can be tested against
+       hand-built token lists without needing the tokenizer to be correct.
+       """
+       
+    1: from __future__ import annotations
+       
+    1: from dataclasses import dataclass
+    1: from enum import Enum, auto
+    1: from typing import List, Optional
+       
+    1: from .errors import TokenizeError
+       
+       
+    2: class TokenType(Enum):
+    1:     NUMBER = auto()
+    1:     PLUS = auto()
+    1:     MINUS = auto()
+    1:     STAR = auto()
+    1:     SLASH = auto()
+    1:     PERCENT = auto()
+    1:     DOUBLE_STAR = auto()
+    1:     LPAREN = auto()
+    1:     RPAREN = auto()
+    1:     EOF = auto()
+       
+       
+    3: @dataclass
+    2: class Token:
+    1:     type: TokenType
+    1:     value: Optional[float] = None
+       
+       
+       # Single-character tokens that need no special handling beyond a
+       # direct lookup. "*" is handled separately below since it needs to
+       # check for a following "*" to form DOUBLE_STAR first.
+    1: _SIMPLE_TOKENS = {
+    1:     "+": TokenType.PLUS,
+    1:     "-": TokenType.MINUS,
+    1:     "/": TokenType.SLASH,
+    1:     "%": TokenType.PERCENT,
+    1:     "(": TokenType.LPAREN,
+    1:     ")": TokenType.RPAREN,
+       }
+       
+       
+    1: def tokenize(text: str) -> List[Token]:
+           """Convert an expression string into a list of Tokens, ending in EOF.
+       
+           Raises:
+               TokenizeError: if the string contains a character (or
+                   malformed number) that cannot be turned into a valid token.
+           """
+   81:     tokens: List[Token] = []
+   81:     i = 0
+   81:     n = len(text)
+       
+  443:     while i < n:
+  370:         ch = text[i]
+       
+  370:         if ch.isspace():
+   80:             i += 1
+   80:             continue
+       
+  290:         if ch.isdigit():
+  143:             start = i
+  143:             seen_dot = False
+  316:             while i < n and (text[i].isdigit() or text[i] == "."):
+  174:                 if text[i] == ".":
+    7:                     if seen_dot:
+                               # A second "." in the same number is invalid,
+                               # e.g. "3.1.4" -- report it clearly rather
+                               # than silently truncating or misparsing.
+    2:                         raise TokenizeError(
+    1:                             f"Invalid number '{text[start:i + 1]}' at position {start}: "
+                                   "a number cannot contain more than one decimal point."
+                               )
+    6:                     seen_dot = True
+  173:                 i += 1
+  142:             number_text = text[start:i]
+  142:             tokens.append(Token(TokenType.NUMBER, float(number_text)))
+  142:             continue
+       
+  147:         if ch == "*":
+   32:             if i + 1 < n and text[i + 1] == "*":
+   15:                 tokens.append(Token(TokenType.DOUBLE_STAR))
+   15:                 i += 2
+                   else:
+   17:                 tokens.append(Token(TokenType.STAR))
+   17:                 i += 1
+   32:             continue
+       
+  115:         if ch in _SIMPLE_TOKENS:
+  108:             tokens.append(Token(_SIMPLE_TOKENS[ch]))
+  108:             i += 1
+  108:             continue
+       
+               # Anything else -- letters, symbols we don't support, a
+               # leading "." with no digit before it, etc. -- is invalid.
+    7:         raise TokenizeError(f"Invalid character '{ch}' at position {i}.")
+       
+   73:     tokens.append(Token(TokenType.EOF))
+   73:     return tokens

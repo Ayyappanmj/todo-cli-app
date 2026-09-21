@@ -1,0 +1,26 @@
+test_minus_before_number_is_two_separate_tokens (tests.test_tokenizer.TestTokenizeCombinedExpressions.test_minus_before_number_is_two_separate_tokens) ... ok
+test_realistic_expression (tests.test_tokenizer.TestTokenizeCombinedExpressions.test_realistic_expression) ... ok
+test_invalid_character_message_includes_the_character (tests.test_tokenizer.TestTokenizeErrors.test_invalid_character_message_includes_the_character) ... ok
+test_invalid_character_raises (tests.test_tokenizer.TestTokenizeErrors.test_invalid_character_raises) ... ok
+test_leading_decimal_point_raises (tests.test_tokenizer.TestTokenizeErrors.test_leading_decimal_point_raises) ... ok
+test_letters_raise (tests.test_tokenizer.TestTokenizeErrors.test_letters_raise) ... ok
+test_number_with_two_decimal_points_raises (tests.test_tokenizer.TestTokenizeErrors.test_number_with_two_decimal_points_raises) ... ok
+test_scientific_notation_is_not_supported (tests.test_tokenizer.TestTokenizeErrors.test_scientific_notation_is_not_supported) ... ok
+test_multi_digit_number (tests.test_tokenizer.TestTokenizeNumbers.test_multi_digit_number) ... ok
+test_number_with_trailing_zero_decimal (tests.test_tokenizer.TestTokenizeNumbers.test_number_with_trailing_zero_decimal) ... ok
+test_single_float (tests.test_tokenizer.TestTokenizeNumbers.test_single_float) ... ok
+test_single_integer (tests.test_tokenizer.TestTokenizeNumbers.test_single_integer) ... ok
+test_zero (tests.test_tokenizer.TestTokenizeNumbers.test_zero) ... ok
+test_all_single_char_operators (tests.test_tokenizer.TestTokenizeOperatorsAndParens.test_all_single_char_operators) ... ok
+test_double_star_is_a_single_power_token (tests.test_tokenizer.TestTokenizeOperatorsAndParens.test_double_star_is_a_single_power_token) ... ok
+test_parentheses (tests.test_tokenizer.TestTokenizeOperatorsAndParens.test_parentheses) ... ok
+test_star_star_star_is_power_then_star (tests.test_tokenizer.TestTokenizeOperatorsAndParens.test_star_star_star_is_power_then_star) ... ok
+test_empty_string_yields_only_eof (tests.test_tokenizer.TestTokenizeWhitespaceAndEmpty.test_empty_string_yields_only_eof) ... ok
+test_tabs_and_newlines_are_ignored (tests.test_tokenizer.TestTokenizeWhitespaceAndEmpty.test_tabs_and_newlines_are_ignored) ... ok
+test_whitespace_is_ignored (tests.test_tokenizer.TestTokenizeWhitespaceAndEmpty.test_whitespace_is_ignored) ... ok
+test_whitespace_only_yields_only_eof (tests.test_tokenizer.TestTokenizeWhitespaceAndEmpty.test_whitespace_only_yields_only_eof) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.001s
+
+OK

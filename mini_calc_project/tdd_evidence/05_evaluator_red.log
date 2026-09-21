@@ -1,0 +1,19 @@
+test_evaluator (unittest.loader._FailedTest.test_evaluator) ... ERROR
+
+======================================================================
+ERROR: test_evaluator (unittest.loader._FailedTest.test_evaluator)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_evaluator
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/unittest/loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/mini_calc_project/tests/test_evaluator.py", line 15, in <module>
+    from mini_calc.evaluator import evaluate_ast
+ModuleNotFoundError: No module named 'mini_calc.evaluator'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

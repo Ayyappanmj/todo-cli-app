@@ -1,0 +1,27 @@
+test_addition (tests.test_evaluator.TestEvaluateBinaryArithmetic.test_addition) ... ok
+test_division (tests.test_evaluator.TestEvaluateBinaryArithmetic.test_division) ... ok
+test_division_result_is_always_float (tests.test_evaluator.TestEvaluateBinaryArithmetic.test_division_result_is_always_float) ... ok
+test_modulo (tests.test_evaluator.TestEvaluateBinaryArithmetic.test_modulo) ... ok
+test_multiplication (tests.test_evaluator.TestEvaluateBinaryArithmetic.test_multiplication) ... ok
+test_power (tests.test_evaluator.TestEvaluateBinaryArithmetic.test_power) ... ok
+test_power_with_negative_exponent (tests.test_evaluator.TestEvaluateBinaryArithmetic.test_power_with_negative_exponent) ... ok
+test_power_with_zero_exponent (tests.test_evaluator.TestEvaluateBinaryArithmetic.test_power_with_zero_exponent) ... ok
+test_subtraction (tests.test_evaluator.TestEvaluateBinaryArithmetic.test_subtraction) ... ok
+test_division_by_zero_message_is_descriptive (tests.test_evaluator.TestEvaluateErrors.test_division_by_zero_message_is_descriptive) ... ok
+test_division_by_zero_raises (tests.test_evaluator.TestEvaluateErrors.test_division_by_zero_raises) ... ok
+test_modulo_by_zero_raises (tests.test_evaluator.TestEvaluateErrors.test_modulo_by_zero_raises) ... ok
+test_unknown_binary_operator_raises (tests.test_evaluator.TestEvaluateErrors.test_unknown_binary_operator_raises) ... ok
+test_unknown_unary_operator_raises (tests.test_evaluator.TestEvaluateErrors.test_unknown_unary_operator_raises) ... ok
+test_nested_binary_ops (tests.test_evaluator.TestEvaluateNestedTrees.test_nested_binary_ops) ... ok
+test_unary_wrapped_around_binary (tests.test_evaluator.TestEvaluateNestedTrees.test_unary_wrapped_around_binary) ... ok
+test_float (tests.test_evaluator.TestEvaluateNumber.test_float) ... ok
+test_positive_number (tests.test_evaluator.TestEvaluateNumber.test_positive_number) ... ok
+test_zero (tests.test_evaluator.TestEvaluateNumber.test_zero) ... ok
+test_double_unary_minus_cancels_out (tests.test_evaluator.TestEvaluateUnary.test_double_unary_minus_cancels_out) ... ok
+test_unary_minus (tests.test_evaluator.TestEvaluateUnary.test_unary_minus) ... ok
+test_unary_plus_is_a_no_op (tests.test_evaluator.TestEvaluateUnary.test_unary_plus_is_a_no_op) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.001s
+
+OK

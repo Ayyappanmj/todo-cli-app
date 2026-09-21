@@ -1,0 +1,19 @@
+test_tokenizer (unittest.loader._FailedTest.test_tokenizer) ... ERROR
+
+======================================================================
+ERROR: test_tokenizer (unittest.loader._FailedTest.test_tokenizer)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_tokenizer
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/unittest/loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/mini_calc_project/tests/test_tokenizer.py", line 16, in <module>
+    from mini_calc.tokenizer import tokenize, Token, TokenType
+ModuleNotFoundError: No module named 'mini_calc.tokenizer'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)
