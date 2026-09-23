@@ -1,0 +1,36 @@
+cProfile report -- OPTIMIZED LogAnalyzer, dataset size = 8000
+================================================================================
+
+         84849 function calls (84825 primitive calls) in 0.036 seconds
+
+   Ordered by: cumulative time
+   List reduced from 45 to 25 due to restriction <25>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.036    0.036 D:\juniour python developer intern\todo_cli_app\todo_cli_app\perf_optimization_project\perf_project\optimized\log_analyzer.py:200(run_all)
+        1    0.004    0.004    0.010    0.010 D:\juniour python developer intern\todo_cli_app\todo_cli_app\perf_optimization_project\perf_project\optimized\log_analyzer.py:186(word_frequency)
+        1    0.004    0.004    0.007    0.007 D:\juniour python developer intern\todo_cli_app\todo_cli_app\perf_optimization_project\perf_project\optimized\log_analyzer.py:130(category_counts)
+        3    0.000    0.000    0.007    0.002 C:\Users\Ayyappan\AppData\Local\Programs\Python\Python311\Lib\collections\__init__.py:587(__init__)
+        3    0.000    0.000    0.007    0.002 C:\Users\Ayyappan\AppData\Local\Programs\Python\Python311\Lib\collections\__init__.py:660(update)
+        3    0.005    0.002    0.007    0.002 {built-in method _collections._count_elements}
+        1    0.004    0.004    0.006    0.006 D:\juniour python developer intern\todo_cli_app\todo_cli_app\perf_optimization_project\perf_project\optimized\log_analyzer.py:67(find_users_with_multiple_ips)
+        1    0.003    0.003    0.005    0.005 D:\juniour python developer intern\todo_cli_app\todo_cli_app\perf_optimization_project\perf_project\optimized\log_analyzer.py:81(extract_query_durations)
+        2    0.000    0.000    0.005    0.002 D:\juniour python developer intern\todo_cli_app\todo_cli_app\perf_optimization_project\perf_project\optimized\log_analyzer.py:54(find_duplicate_messages)
+        1    0.000    0.000    0.004    0.004 D:\juniour python developer intern\todo_cli_app\todo_cli_app\perf_optimization_project\perf_project\optimized\log_analyzer.py:154(build_summary_report)
+        2    0.003    0.001    0.003    0.001 D:\juniour python developer intern\todo_cli_app\todo_cli_app\perf_optimization_project\perf_project\optimized\log_analyzer.py:37(count_by_user)
+     8000    0.002    0.000    0.002    0.000 D:\juniour python developer intern\todo_cli_app\todo_cli_app\perf_optimization_project\perf_project\optimized\log_analyzer.py:126(classify_message)
+     8555    0.002    0.000    0.002    0.000 {method 'search' of 're.Pattern' objects}
+     8000    0.002    0.000    0.002    0.000 {method 'split' of 'str' objects}
+    16002    0.002    0.000    0.002    0.000 D:\juniour python developer intern\todo_cli_app\todo_cli_app\perf_optimization_project\perf_project\optimized\log_analyzer.py:63(<genexpr>)
+     8000    0.001    0.000    0.001    0.000 {method 'add' of 'set' objects}
+     8000    0.001    0.000    0.001    0.000 {method 'lower' of 'str' objects}
+     8000    0.001    0.000    0.001    0.000 {method 'extend' of 'list' objects}
+     8000    0.001    0.000    0.001    0.000 {method 'setdefault' of 'dict' objects}
+     8000    0.001    0.000    0.001    0.000 {method 'get' of 'dict' objects}
+      295    0.000    0.000    0.001    0.000 D:\juniour python developer intern\todo_cli_app\todo_cli_app\perf_optimization_project\perf_project\optimized\log_analyzer.py:96(_classify_message_cached)
+        1    0.000    0.000    0.000    0.000 D:\juniour python developer intern\todo_cli_app\todo_cli_app\perf_optimization_project\perf_project\optimized\log_analyzer.py:143(top_n_users_by_count)
+        1    0.000    0.000    0.000    0.000 C:\Users\Ayyappan\AppData\Local\Programs\Python\Python311\Lib\heapq.py:523(nlargest)
+     1846    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1431    0.000    0.000    0.000    0.000 {method 'group' of 're.Match' objects}
+
+

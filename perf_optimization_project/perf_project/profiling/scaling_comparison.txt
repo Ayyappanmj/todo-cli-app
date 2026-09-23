@@ -1,0 +1,21 @@
+Full run_all() scaling comparison: ORIGINAL vs OPTIMIZED
+==============================================================================
+       n   original (s)   optimized (s)    speedup
+--------------------------------------------------
+    1000         0.0696         0.00149      46.8x
+    2000         0.2703         0.00268     100.7x
+    4000         1.0368         0.00515     201.4x
+    8000         3.9797         0.00869     458.0x
+   16000        17.1982         0.01885     912.5x
+
+Optimized-only at larger sizes (original not run here -- its
+confirmed O(n^2) trend above means it would take on the order of
+hours at these sizes; extrapolation is discussed in the report):
+   50000             --         0.06673
+  200000             --         0.24268
+
+Rough quadratic-fit extrapolation for the ORIGINAL at larger n
+(estimate only, based on fitting c in time ~= c * n^2 to the
+n=8000 and n=16000 measurements above; c ~= 6.468e-08):
+  n=  50000: estimated ~162s (~2.7 minutes)
+  n= 200000: estimated ~2,587s (~43.1 minutes)

@@ -1,0 +1,36 @@
+cProfile report -- ORIGINAL LogAnalyzer, dataset size = 8000
+================================================================================
+
+         186875 function calls (186841 primitive calls) in 19.542 seconds
+
+   Ordered by: cumulative time
+   List reduced from 72 to 25 due to restriction <25>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000   19.542   19.542 D:\juniour python developer intern\todo_cli_app\todo_cli_app\perf_optimization_project\perf_project\original\log_analyzer.py:199(run_all)
+        1   19.295   19.295   19.303   19.303 D:\juniour python developer intern\todo_cli_app\todo_cli_app\perf_optimization_project\perf_project\original\log_analyzer.py:61(find_users_with_multiple_ips)
+        1    0.022    0.022    0.100    0.100 D:\juniour python developer intern\todo_cli_app\todo_cli_app\perf_optimization_project\perf_project\original\log_analyzer.py:175(word_frequency)
+        1    0.008    0.008    0.081    0.081 D:\juniour python developer intern\todo_cli_app\todo_cli_app\perf_optimization_project\perf_project\original\log_analyzer.py:118(category_counts)
+    29990    0.021    0.000    0.075    0.000 C:\Users\Ayyappan\AppData\Local\Programs\Python\Python311\Lib\re\__init__.py:173(search)
+      162    0.074    0.000    0.074    0.000 {method 'count' of 'list' objects}
+     8000    0.012    0.000    0.072    0.000 D:\juniour python developer intern\todo_cli_app\todo_cli_app\perf_optimization_project\perf_project\original\log_analyzer.py:99(classify_message)
+    29990    0.021    0.000    0.033    0.000 C:\Users\Ayyappan\AppData\Local\Programs\Python\Python311\Lib\re\__init__.py:272(_compile)
+        2    0.031    0.015    0.031    0.015 D:\juniour python developer intern\todo_cli_app\todo_cli_app\perf_optimization_project\perf_project\original\log_analyzer.py:41(find_duplicate_messages)
+        1    0.006    0.006    0.021    0.021 D:\juniour python developer intern\todo_cli_app\todo_cli_app\perf_optimization_project\perf_project\original\log_analyzer.py:82(extract_query_durations)
+    29990    0.021    0.000    0.021    0.000 {method 'search' of 're.Pattern' objects}
+        1    0.000    0.000    0.011    0.011 D:\juniour python developer intern\todo_cli_app\todo_cli_app\perf_optimization_project\perf_project\original\log_analyzer.py:147(build_summary_report)
+8121/8110    0.008    0.000    0.008    0.000 {built-in method builtins.len}
+    30123    0.006    0.000    0.006    0.000 {built-in method builtins.isinstance}
+     5990    0.003    0.000    0.004    0.000 C:\Users\Ayyappan\AppData\Local\Programs\Python\Python311\Lib\enum.py:193(__get__)
+        2    0.004    0.002    0.004    0.002 D:\juniour python developer intern\todo_cli_app\todo_cli_app\perf_optimization_project\perf_project\original\log_analyzer.py:30(count_by_user)
+     8000    0.003    0.000    0.003    0.000 {method 'split' of 'str' objects}
+        5    0.002    0.000    0.002    0.000 {built-in method builtins.sorted}
+     8005    0.001    0.000    0.001    0.000 {method 'get' of 'dict' objects}
+        1    0.000    0.000    0.001    0.001 D:\juniour python developer intern\todo_cli_app\todo_cli_app\perf_optimization_project\perf_project\original\log_analyzer.py:136(top_n_users_by_count)
+     8000    0.001    0.000    0.001    0.000 {method 'lower' of 'str' objects}
+     8006    0.001    0.000    0.001    0.000 {method 'extend' of 'list' objects}
+     5990    0.001    0.000    0.001    0.000 C:\Users\Ayyappan\AppData\Local\Programs\Python\Python311\Lib\enum.py:1257(value)
+        3    0.000    0.000    0.001    0.000 C:\Users\Ayyappan\AppData\Local\Programs\Python\Python311\Lib\re\_compiler.py:740(compile)
+     2534    0.001    0.000    0.001    0.000 {method 'group' of 're.Match' objects}
+
+

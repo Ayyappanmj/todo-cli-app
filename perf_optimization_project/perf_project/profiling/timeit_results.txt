@@ -1,0 +1,51 @@
+timeit benchmark -- each method run in isolation, best-of-3
+==============================================================================
+
+--- Dataset size n=1000 ---
+method                             original (s)   optimized (s)    speedup
+--------------------------------------------------------------------------
+find_duplicate_messages                 0.00044         0.00006       7.1x
+find_users_with_multiple_ips            0.06573         0.00013     487.9x
+extract_query_durations                 0.00034         0.00014       2.5x
+category_counts                         0.00148         0.00030       4.9x
+word_frequency                          0.00606         0.00039      15.4x
+build_summary_report                    0.00064         0.00023       2.8x
+
+--- Dataset size n=2000 ---
+method                             original (s)   optimized (s)    speedup
+--------------------------------------------------------------------------
+find_duplicate_messages                 0.00113         0.00012       9.0x
+find_users_with_multiple_ips            0.27683         0.00027    1028.5x
+extract_query_durations                 0.00069         0.00027       2.6x
+category_counts                         0.00293         0.00046       6.4x
+word_frequency                          0.01125         0.00071      15.9x
+build_summary_report                    0.00127         0.00034       3.7x
+
+--- Dataset size n=4000 ---
+method                             original (s)   optimized (s)    speedup
+--------------------------------------------------------------------------
+find_duplicate_messages                 0.00231         0.00022      10.3x
+find_users_with_multiple_ips            0.90684         0.00040    2261.0x
+extract_query_durations                 0.00116         0.00045       2.6x
+category_counts                         0.00504         0.00063       8.0x
+word_frequency                          0.01972         0.00131      15.1x
+build_summary_report                    0.00228         0.00052       4.4x
+
+--- Dataset size n=8000 ---
+method                             original (s)   optimized (s)    speedup
+--------------------------------------------------------------------------
+find_duplicate_messages                 0.00418         0.00040      10.5x
+find_users_with_multiple_ips            3.76131         0.00102    3673.6x
+extract_query_durations                 0.00228         0.00087       2.6x
+category_counts                         0.00951         0.00108       8.8x
+word_frequency                          0.03941         0.00266      14.8x
+build_summary_report                    0.00481         0.00104       4.6x
+
+
+--- Warm-cache benefit (optimized only, same data, repeated calls) ---
+  category_counts() call 1 [cold cache]: 0.001240s
+  category_counts() call 2 [warm cache (call #2)]: 0.000887s
+  category_counts() call 3 [warm cache (call #3)]: 0.000917s
+  category_counts() call 4 [warm cache (call #4)]: 0.000890s
+  category_counts() call 5 [warm cache (call #5)]: 0.000915s
+  Final cache_info(): CacheInfo(hits=39705, misses=295, maxsize=4096, currsize=295)
