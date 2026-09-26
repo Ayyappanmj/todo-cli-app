@@ -1,0 +1,7 @@
+# mini_calc has no runtime dependencies -- it uses only the Python
+# standard library. This file is intentionally (almost) empty; it
+# exists so tooling/reviewers that look for a requirements.txt find
+# one confirming that fact explicitly, rather than wondering whether
+# it was simply forgotten.
+#
+# For development/CI tooling (flake8, pytest), see requirements-dev.txt.

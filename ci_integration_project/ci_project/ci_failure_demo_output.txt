@@ -1,0 +1,135 @@
+
+==============================================================================
+STEP 1/2: Lint  (tools/simple_lint.py -- stand-in for flake8; see docstring)
+==============================================================================
+
+==============================================================================
+simple_lint.py results: /home/claude/ci_project/mini_calc
+==============================================================================
+No issues found.
+
+==============================================================================
+simple_lint.py results: /home/claude/ci_project/tests
+==============================================================================
+No issues found.
+
+==============================================================================
+STEP 2/2: Tests  (unittest, wrapped to also emit a JUnit XML report)
+==============================================================================
+test_addition (tests.test_evaluator.TestEvaluateBinaryArithmetic.test_addition) ... ok
+test_division (tests.test_evaluator.TestEvaluateBinaryArithmetic.test_division) ... ok
+test_division_result_is_always_float (tests.test_evaluator.TestEvaluateBinaryArithmetic.test_division_result_is_always_float) ... ok
+test_modulo (tests.test_evaluator.TestEvaluateBinaryArithmetic.test_modulo) ... ok
+test_multiplication (tests.test_evaluator.TestEvaluateBinaryArithmetic.test_multiplication) ... ok
+test_power (tests.test_evaluator.TestEvaluateBinaryArithmetic.test_power) ... ok
+test_power_with_negative_exponent (tests.test_evaluator.TestEvaluateBinaryArithmetic.test_power_with_negative_exponent) ... ok
+test_power_with_zero_exponent (tests.test_evaluator.TestEvaluateBinaryArithmetic.test_power_with_zero_exponent) ... ok
+test_subtraction (tests.test_evaluator.TestEvaluateBinaryArithmetic.test_subtraction) ... ok
+test_division_by_zero_message_is_descriptive (tests.test_evaluator.TestEvaluateErrors.test_division_by_zero_message_is_descriptive) ... ok
+test_division_by_zero_raises (tests.test_evaluator.TestEvaluateErrors.test_division_by_zero_raises) ... ok
+test_modulo_by_zero_raises (tests.test_evaluator.TestEvaluateErrors.test_modulo_by_zero_raises) ... ok
+test_unknown_binary_operator_raises (tests.test_evaluator.TestEvaluateErrors.test_unknown_binary_operator_raises) ... ok
+test_unknown_unary_operator_raises (tests.test_evaluator.TestEvaluateErrors.test_unknown_unary_operator_raises) ... ok
+test_nested_binary_ops (tests.test_evaluator.TestEvaluateNestedTrees.test_nested_binary_ops) ... ok
+test_unary_wrapped_around_binary (tests.test_evaluator.TestEvaluateNestedTrees.test_unary_wrapped_around_binary) ... ok
+test_float (tests.test_evaluator.TestEvaluateNumber.test_float) ... ok
+test_positive_number (tests.test_evaluator.TestEvaluateNumber.test_positive_number) ... FAIL
+test_zero (tests.test_evaluator.TestEvaluateNumber.test_zero) ... ok
+test_double_unary_minus_cancels_out (tests.test_evaluator.TestEvaluateUnary.test_double_unary_minus_cancels_out) ... ok
+test_unary_minus (tests.test_evaluator.TestEvaluateUnary.test_unary_minus) ... ok
+test_unary_plus_is_a_no_op (tests.test_evaluator.TestEvaluateUnary.test_unary_plus_is_a_no_op) ... ok
+test_matches_python_eval_for_each_expression (tests.test_integration.TestEndToEndAgainstPythonAsOracle.test_matches_python_eval_for_each_expression) ... ok
+test_binary_plus_then_unary_plus (tests.test_integration.TestEndToEndArithmetic.test_binary_plus_then_unary_plus) ... ok
+test_deeply_nested_expression (tests.test_integration.TestEndToEndArithmetic.test_deeply_nested_expression) ... ok
+test_division_returns_float (tests.test_integration.TestEndToEndArithmetic.test_division_returns_float) ... ok
+test_floats (tests.test_integration.TestEndToEndArithmetic.test_floats) ... ok
+test_generous_whitespace (tests.test_integration.TestEndToEndArithmetic.test_generous_whitespace) ... ok
+test_modulo (tests.test_integration.TestEndToEndArithmetic.test_modulo) ... ok
+test_nested_parens_with_unary (tests.test_integration.TestEndToEndArithmetic.test_nested_parens_with_unary) ... ok
+test_operator_precedence (tests.test_integration.TestEndToEndArithmetic.test_operator_precedence) ... ok
+test_parentheses_override_precedence (tests.test_integration.TestEndToEndArithmetic.test_parentheses_override_precedence) ... ok
+test_power_right_associativity (tests.test_integration.TestEndToEndArithmetic.test_power_right_associativity) ... ok
+test_simple_addition (tests.test_integration.TestEndToEndArithmetic.test_simple_addition) ... ok
+test_unary_minus_vs_power_precedence (tests.test_integration.TestEndToEndArithmetic.test_unary_minus_vs_power_precedence) ... ok
+test_all_error_types_are_calculator_errors (tests.test_integration.TestEndToEndErrorPropagation.test_all_error_types_are_calculator_errors) ... ok
+test_division_by_zero_inside_parens_raises (tests.test_integration.TestEndToEndErrorPropagation.test_division_by_zero_inside_parens_raises) ... ok
+test_division_by_zero_raises_evaluation_error (tests.test_integration.TestEndToEndErrorPropagation.test_division_by_zero_raises_evaluation_error) ... ok
+test_empty_expression_raises_parse_error (tests.test_integration.TestEndToEndErrorPropagation.test_empty_expression_raises_parse_error) ... ok
+test_invalid_character_raises_tokenize_error (tests.test_integration.TestEndToEndErrorPropagation.test_invalid_character_raises_tokenize_error) ... ok
+test_unbalanced_parens_raises_parse_error (tests.test_integration.TestEndToEndErrorPropagation.test_unbalanced_parens_raises_parse_error) ... ok
+test_error_hierarchy (tests.test_integration.TestPackageExports.test_error_hierarchy) ... ok
+test_error_types_are_exported (tests.test_integration.TestPackageExports.test_error_types_are_exported) ... ok
+test_evaluate_is_exported (tests.test_integration.TestPackageExports.test_evaluate_is_exported) ... ok
+test_addition (tests.test_parser.TestParseBinaryPrecedence.test_addition) ... ok
+test_addition_is_left_associative (tests.test_parser.TestParseBinaryPrecedence.test_addition_is_left_associative) ... ok
+test_modulo_same_precedence_as_multiply_divide (tests.test_parser.TestParseBinaryPrecedence.test_modulo_same_precedence_as_multiply_divide) ... ok
+test_multiplication_binds_tighter_than_addition (tests.test_parser.TestParseBinaryPrecedence.test_multiplication_binds_tighter_than_addition) ... ok
+test_multiplication_is_left_associative (tests.test_parser.TestParseBinaryPrecedence.test_multiplication_is_left_associative) ... ok
+test_parentheses_override_precedence (tests.test_parser.TestParseBinaryPrecedence.test_parentheses_override_precedence) ... ok
+test_empty_expression_raises (tests.test_parser.TestParseErrors.test_empty_expression_raises) ... ok
+test_empty_parentheses_raise (tests.test_parser.TestParseErrors.test_empty_parentheses_raise) ... ok
+test_error_message_is_descriptive (tests.test_parser.TestParseErrors.test_error_message_is_descriptive) ... ok
+test_leading_binary_operator_raises (tests.test_parser.TestParseErrors.test_leading_binary_operator_raises) ... ok
+test_trailing_operator_raises (tests.test_parser.TestParseErrors.test_trailing_operator_raises) ... ok
+test_two_numbers_with_no_operator_raises (tests.test_parser.TestParseErrors.test_two_numbers_with_no_operator_raises) ... ok
+test_unclosed_parenthesis_raises (tests.test_parser.TestParseErrors.test_unclosed_parenthesis_raises) ... ok
+test_unopened_parenthesis_raises (tests.test_parser.TestParseErrors.test_unopened_parenthesis_raises) ... ok
+test_whitespace_only_expression_raises (tests.test_parser.TestParseErrors.test_whitespace_only_expression_raises) ... ok
+test_power_binds_tighter_than_multiplication (tests.test_parser.TestParsePower.test_power_binds_tighter_than_multiplication) ... ok
+test_power_is_right_associative (tests.test_parser.TestParsePower.test_power_is_right_associative) ... ok
+test_power_with_unary_minus_exponent (tests.test_parser.TestParsePower.test_power_with_unary_minus_exponent) ... ok
+test_nested_parentheses (tests.test_parser.TestParseSingleValues.test_nested_parentheses) ... ok
+test_parenthesized_number (tests.test_parser.TestParseSingleValues.test_parenthesized_number) ... ok
+test_single_float (tests.test_parser.TestParseSingleValues.test_single_float) ... ok
+test_single_number (tests.test_parser.TestParseSingleValues.test_single_number) ... ok
+test_binary_plus_followed_by_unary_plus (tests.test_parser.TestParseUnary.test_binary_plus_followed_by_unary_plus) ... ok
+test_double_unary_minus (tests.test_parser.TestParseUnary.test_double_unary_minus) ... ok
+test_unary_minus (tests.test_parser.TestParseUnary.test_unary_minus) ... ok
+test_unary_minus_binds_looser_than_power (tests.test_parser.TestParseUnary.test_unary_minus_binds_looser_than_power) ... ok
+test_unary_plus (tests.test_parser.TestParseUnary.test_unary_plus) ... ok
+test_hand_built_addition (tests.test_parser.TestParserAgainstHandBuiltTokens.test_hand_built_addition) ... ok
+test_hand_built_trailing_garbage_token_raises (tests.test_parser.TestParserAgainstHandBuiltTokens.test_hand_built_trailing_garbage_token_raises) ... ok
+test_minus_before_number_is_two_separate_tokens (tests.test_tokenizer.TestTokenizeCombinedExpressions.test_minus_before_number_is_two_separate_tokens) ... ok
+test_realistic_expression (tests.test_tokenizer.TestTokenizeCombinedExpressions.test_realistic_expression) ... ok
+test_invalid_character_message_includes_the_character (tests.test_tokenizer.TestTokenizeErrors.test_invalid_character_message_includes_the_character) ... ok
+test_invalid_character_raises (tests.test_tokenizer.TestTokenizeErrors.test_invalid_character_raises) ... ok
+test_leading_decimal_point_raises (tests.test_tokenizer.TestTokenizeErrors.test_leading_decimal_point_raises) ... ok
+test_letters_raise (tests.test_tokenizer.TestTokenizeErrors.test_letters_raise) ... ok
+test_number_with_two_decimal_points_raises (tests.test_tokenizer.TestTokenizeErrors.test_number_with_two_decimal_points_raises) ... ok
+test_scientific_notation_is_not_supported (tests.test_tokenizer.TestTokenizeErrors.test_scientific_notation_is_not_supported) ... ok
+test_multi_digit_number (tests.test_tokenizer.TestTokenizeNumbers.test_multi_digit_number) ... ok
+test_number_with_trailing_zero_decimal (tests.test_tokenizer.TestTokenizeNumbers.test_number_with_trailing_zero_decimal) ... ok
+test_single_float (tests.test_tokenizer.TestTokenizeNumbers.test_single_float) ... ok
+test_single_integer (tests.test_tokenizer.TestTokenizeNumbers.test_single_integer) ... ok
+test_zero (tests.test_tokenizer.TestTokenizeNumbers.test_zero) ... ok
+test_all_single_char_operators (tests.test_tokenizer.TestTokenizeOperatorsAndParens.test_all_single_char_operators) ... ok
+test_double_star_is_a_single_power_token (tests.test_tokenizer.TestTokenizeOperatorsAndParens.test_double_star_is_a_single_power_token) ... ok
+test_parentheses (tests.test_tokenizer.TestTokenizeOperatorsAndParens.test_parentheses) ... ok
+test_star_star_star_is_power_then_star (tests.test_tokenizer.TestTokenizeOperatorsAndParens.test_star_star_star_is_power_then_star) ... ok
+test_empty_string_yields_only_eof (tests.test_tokenizer.TestTokenizeWhitespaceAndEmpty.test_empty_string_yields_only_eof) ... ok
+test_tabs_and_newlines_are_ignored (tests.test_tokenizer.TestTokenizeWhitespaceAndEmpty.test_tabs_and_newlines_are_ignored) ... ok
+test_whitespace_is_ignored (tests.test_tokenizer.TestTokenizeWhitespaceAndEmpty.test_whitespace_is_ignored) ... ok
+test_whitespace_only_yields_only_eof (tests.test_tokenizer.TestTokenizeWhitespaceAndEmpty.test_whitespace_only_yields_only_eof) ... ok
+
+======================================================================
+FAIL: test_positive_number (tests.test_evaluator.TestEvaluateNumber.test_positive_number)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/claude/ci_project/tests/test_evaluator.py", line 22, in test_positive_number
+    self.assertEqual(evaluate_ast(Number(5)), 999)
+AssertionError: 5.0 != 999
+
+----------------------------------------------------------------------
+Ran 94 tests in 0.003s
+
+FAILED (failures=1)
+
+JUnit XML report written to: /home/claude/ci_project/test-results/junit.xml
+
+==============================================================================
+SUMMARY
+==============================================================================
+  Lint:  PASSED
+  Tests: FAILED
+
+One or more checks failed. ✘ (this is what would fail the CI pipeline)
